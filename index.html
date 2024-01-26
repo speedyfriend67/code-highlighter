@@ -14,6 +14,8 @@
     font-family: monospace;
     white-space: pre-wrap;
     margin: 20px auto;
+    direction: rtl; /* Set direction to right-to-left */
+    text-align: left; /* Align text to left */
   }
 </style>
 </head>
@@ -31,9 +33,13 @@
     });
 
     function highlightCode() {
-      const code = codeEditor.textContent;
-      codeEditor.innerHTML = code; // Preserve user input
-      hljs.highlightElement(codeEditor); // Highlight the code in the div
+      const reversedCode = reverseString(codeEditor.textContent);
+      codeEditor.innerHTML = reversedCode;
+      hljs.highlightElement(codeEditor);
+    }
+
+    function reverseString(str) {
+      return str.split("").reverse().join("");
     }
   });
 </script>
