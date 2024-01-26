@@ -33,16 +33,13 @@
     });
 
     function highlightCode() {
-      const reversedCode = reverseString(codeEditor.textContent);
-      codeEditor.innerHTML = reversedCode;
+      const code = codeEditor.textContent;
+      codeEditor.innerHTML = code;
       hljs.highlightElement(codeEditor);
-    }
-
-    function reverseString(str) {
-      return str.split("").reverse().join("");
     }
   });
 </script>
 </body>
 </html>
+
 
