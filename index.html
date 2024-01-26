@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Real-time Code Highlighter</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<title>Real-time Code Highlighter with Reversed Text</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css">
 <style>
   #code-editor {
     width: 80%;
@@ -22,8 +22,9 @@
 <body>
 <div id="code-editor" contenteditable="true"></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-javascript.min.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     const codeEditor = document.getElementById("code-editor");
@@ -35,12 +36,11 @@
     function highlightCode() {
       const code = codeEditor.textContent;
       codeEditor.innerHTML = code;
-      hljs.highlightElement(codeEditor);
+      Prism.highlightAll();
     }
   });
 </script>
 </body>
 </html>
-
 
 
