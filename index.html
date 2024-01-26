@@ -18,22 +18,25 @@
 </style>
 </head>
 <body>
-<div id="code-editor" contenteditable="true" placeholder="Type your code here..."></div>
+<div id="code-editor" contenteditable="true"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
 <script>
-  const codeEditor = document.getElementById("code-editor");
+  document.addEventListener("DOMContentLoaded", function() {
+    const codeEditor = document.getElementById("code-editor");
 
-  codeEditor.addEventListener("input", function () {
-    highlightCode();
+    codeEditor.addEventListener("input", function () {
+      highlightCode();
+    });
+
+    function highlightCode() {
+      const code = codeEditor.textContent;
+      codeEditor.innerHTML = code; // Preserve user input
+      hljs.highlightElement(codeEditor); // Highlight the code in the div
+    }
   });
-
-  function highlightCode() {
-    const code = codeEditor.textContent;
-    codeEditor.innerHTML = code; // Preserve user input
-    hljs.highlightElement(codeEditor); // Highlight the code in the div
-  }
 </script>
 </body>
 </html>
+
