@@ -19,9 +19,9 @@
   });
 
   function highlightCode() {
-    const code = codeEditor.textContent; // Use textContent instead of innerText
-    codeEditor.innerHTML = code; // Update the innerHTML directly
-    hljs.highlightAll();
+    const code = codeEditor.textContent;
+    codeEditor.innerHTML = code; // Preserve user input
+    hljs.highlightElement(codeEditor); // Highlight the code in the div
   }
 </script>
 </body>
