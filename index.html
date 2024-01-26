@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code Highlighter</title>
+<style>
+  #code-editor {
+    width: 100%;
+    min-height: 200px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-family: monospace;
+    white-space: pre-wrap;
+  }
+  .keyword {
+    color: blue;
+  }
+  .comment {
+    color: green;
+  }
+</style>
+</head>
+<body>
+<div id="code-editor" contenteditable="true"></div>
+
+<script>
+  const codeEditor = document.getElementById("code-editor");
+
+  codeEditor.addEventListener("input", function () {
+    highlightCode();
+  });
+
+  function highlightCode() {
+    const code = codeEditor.innerText;
+    const highlightedCode = syntaxHighlight(code);
+    codeEditor.innerHTML = highlightedCode;
+  }
+
+  function syntaxHighlight(code) {
+    // Define your syntax highlighting logic here
+    // This is a basic example, you can expand it to support more languages and rules
+    const keywords = ["function", "if", "else", "for", "while", "return"];
+    const commentsRegex = /\/\/.*|\/\*[\s\S]*?\*\//g;
+
+    code = code.replace(commentsRegex, (match) => `<span class="comment">${match}</span>`);
+
+    keywords.forEach(keyword => {
+      const keywordRegex = new RegExp(`\\b${keyword}\\b`, "g");
+      code = code.replace(keywordRegex, `<span class="keyword">${keyword}</span>`);
+    });
+
+    return code;
+  }
+</script>
+</body>
+</html>
